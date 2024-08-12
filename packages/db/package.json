@@ -5,6 +5,7 @@
         "@prisma/client": "^5.11.0"
     },
     "devDependencies": {
+        "repo/db": "*",
         "prisma": "5.11.0"
     },
     "exports": {
