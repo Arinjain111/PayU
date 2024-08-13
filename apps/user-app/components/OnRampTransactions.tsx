@@ -22,9 +22,11 @@ return (
     <Card title="Recent Transactions">
     <div className="pt-2">
         {transactions.map((t) => (
-        <div className="flex justify-between">
-            <div className="text-sm">Received INR</div>
-            <div className="text-slate-600 text-sm">{t.time.toDateString()}</div>
+        <div className="flex justify-start justify-between items-center my-2">
+            <div className="flex flex-col ">
+                <div className="text-sm">Received INR</div>
+                <div className="text-slate-600 text-xs">{t.time.toDateString()}</div>
+            </div>
             <div className="flex flex-col justify-center">+ Rs {t.amount / 100}</div>
         </div>
         ))}

@@ -22,15 +22,17 @@ export const AddMoney = () => {
             <TextInput label={"Amount"} placeholder={"Amount"} onChange={() => {
 
             }} />
-            <div className="py-4 text-left">
+            <div className="pt-4 pb-2 text-left">
                 Bank
             </div>
-            <Select onSelect={(value) =>{
-                setRedirectUrl(SUPPORTED_BANKS.find(x => x.name === value)?.redirectUrl || "")
-            }} options={SUPPORTED_BANKS.map(x => ({
-                key: x.name,
-                value: x.name
-            }))}/>
+            <div>
+                <Select onSelect={(value) =>{
+                    setRedirectUrl(SUPPORTED_BANKS.find(x => x.name === value)?.redirectUrl || "")
+                }} options={SUPPORTED_BANKS.map(x => ({
+                    key: x.name,
+                    value: x.name
+                }))}/>
+            </div>
             <div className="flex justify-center pt-4">
                 <Button onClick={()=> {
                     window.location.href = redirectUrl || ""
