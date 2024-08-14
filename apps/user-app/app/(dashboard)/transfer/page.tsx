@@ -39,11 +39,11 @@ export default async function() {
     const balance = await getBalance();
     const transaction = await getOnRampTransactions();
 
-    return <div className="w-full h-max mr-4">
+    return <div className="w-full ">
         <div className="text-4xl text-[#6a51a6] pt-8 mb-8 font-bold">
             Transfer
         </div>
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-2 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 p-4">
             <div>
               <AddMoney />  
             </div>
