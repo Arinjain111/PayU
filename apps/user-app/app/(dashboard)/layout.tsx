@@ -6,12 +6,12 @@ export default function Layout({
     children: React.ReactNode;
 }) :JSX.Element {
     return (
-        <div className="flex">
+        <div className="flex h-full">
             <div className="flex flex-col pt-40 w-10 md:w-60 border-r border-slate-300 mr-4">
                 <SidebarItem href= {"/dashboard"} icon={<HomeIcon />} title="Home" />
                 <SidebarItem href= {"/transfer"} icon={<TransferIcon />} title="Transfer" />
                 <SidebarItem href= {"/transactions"} icon={<TransactionsIcon />} title="Transactions" />
-                <SidebarItem href= {"/p2pTransfer"} icon={<P2pTransfer />} title="P 2 P Transfer " />
+                <SidebarItem href= {"/p2pTransfer"} icon={<P2pTransfer />} title="P2P Transfer " />
             </div>
             {children}
         </div>

@@ -8,13 +8,15 @@ datasource db {
 }
 
 model User {
-  id          Int      @id @default(autoincrement())
-  email       String?  @unique
+  id          Int       @id @default(autoincrement())
+  email       String?   @unique
   name        String? 
-  number      String  @unique
+  number      String    @unique
   password    String
   onRampTransaction onRampTransaction[]
-  Balance     Balance[]
+  Balance           Balance[]
+  sentTransfer      P2pTransfer[] @relation(name: "FromUserRelation")
+  receivedTransfer  P2pTransfer[] @relation(name: "ToUserRelation")
 }
 
 model Merchant {
@@ -22,6 +24,17 @@ model Merchant {
   email       String  @unique
   name        String?
   auth_type   AuthType   
+}
+
+model P2pTransfer {
+  id          Int       @id @default(autoincrement())
+  amount      Int
+  timestamp   DateTime
+  fromUserId  Int
+  FromUser    User      @relation(name: "FromUserRelation", fields: [fromUserId], references: [id])
+  ToUserId    Int
+  ToUser      User      @relation(name: "ToUserRelation", fields: [ToUserId], references: [id])
+  status      onRampStatus?
 }
 
 model onRampTransaction {
@@ -44,8 +57,8 @@ model Balance {
 }
 
 enum onRampStatus {
-  Success
-  Failure
+  Success     @map("Recieved")
+  Failure     @map("Transaction Failed")
   Processing
 }
 
