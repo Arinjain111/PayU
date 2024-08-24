@@ -5,18 +5,18 @@ on:
     branches:
       - master
 
-jobs: 
+jobs:
   build:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-
+      
       - name: Install Dependencies
         run: npm install
-
-      -name: Run Build
+        
+      - name: Run Build
         run: npm run build
