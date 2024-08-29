@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  email       String?   @unique
+  name        String? 
+  number      String    @unique
+  password    String
+  onRampTransaction onRampTransaction[]
+  Balance           Balance[]
+  sentTransfer      P2pTransfer[] @relation(name: "FromUserRelation")
+  receivedTransfer  P2pTransfer[] @relation(name: "ToUserRelation")
+}
+
+model Merchant {
+  id          Int     @id @default(autoincrement())
+  email       String  @unique
+  name        String?
+  auth_type   AuthType   
+}
+
+model P2pTransfer {
+  id          Int       @id @default(autoincrement())
+  amount      Int
+  timestamp   DateTime
+  fromUserId  Int
+  FromUser    User      @relation(name: "FromUserRelation", fields: [fromUserId], references: [id])
+  ToUserId    Int
+  ToUser      User      @relation(name: "ToUserRelation", fields: [ToUserId], references: [id])
+  status      onRampStatus?
+}
+
+model onRampTransaction {
+  id        Int     @id @default(autoincrement())
+  status    onRampStatus
+  token     String  @unique
+  provider  String
+  amount    Int
+  startTime DateTime
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
+}
+
+model Balance {
+  id      Int   @id @default(autoincrement())
+  userId  Int   @unique
+  amount  Int 
+  locked  Int
+  user    User  @relation(fields: [userId], references: [id])
+}
+
+enum onRampStatus {
+  Success     @map("Recieved")
+  Failure     @map("Transaction Failed")
+  Processing
+}
+
+enum AuthType {
+  Google
+  Github
+}
