@@ -18,7 +18,7 @@ async function getTransferTransactions() {
             ]
         }
     });
-    return txns.map((t) => {
+    return txns.map((t: any) => {
         if(t.fromUserId == session?.user?.id) {
             return (
                 {
