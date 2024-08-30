@@ -41,6 +41,8 @@ async function getTransferTransactions() {
     })
 }
 
+//there is an error in transactions={transactions} and "strictNullChecks": false is set in tsconfig.json
+
 export default async function() {
     const transaction = await getTransferTransactions();
     return <div className="w-full grid grid-cols-2">

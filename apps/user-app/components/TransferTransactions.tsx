@@ -2,13 +2,12 @@ import { Card } from "@repo/ui/card"
 import { Center } from "@repo/ui/center"
 
 export const TransferTransactions=({ transactions } : {
-   transactions: {
-        time: Date,
-        amount: number,
-        type: string,
-        status: any,
-        userId: number
-   }[]
+transactions: {
+    time: Date,
+    amount: number,
+    type: string,
+    userId: number
+}[]
 }) => {
     if (!transactions.length) {
         return <div className="">
