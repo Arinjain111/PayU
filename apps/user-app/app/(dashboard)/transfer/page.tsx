@@ -34,7 +34,6 @@ async function getOnRampTransactions() {
 }
 
 // TODO: can make a card component to fit in all the different other components
-
 export default async function() {
     const balance = await getBalance();
     const transaction = await getOnRampTransactions();
