@@ -5,11 +5,12 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "db:generate": "cd packages/db && npx prisma generate && cd ../.."
+    "db:generate": "cd packages/db && npx prisma generate && cd ../..",
+    "start-user-app": "cd ./apps/user-app && npm run start"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
-    "turbo": "latest",
+    "turbo": "^2.1.1",
     "typescript": "^5.4.5"
   },
   "engines": {
