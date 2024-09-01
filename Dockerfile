@@ -4,6 +4,8 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json turbo.json ./
 
+# COPY ["package.json", "package-lock.json", "turbo.json ./"]
+
 COPY apps ./apps
 COPY packages ./packages
 
